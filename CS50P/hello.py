@@ -19,3 +19,13 @@ first, last = name.split(" ")
 # Say hello to the user in different formating
 print("Hello, \"respected\"", name, end="\n\n")
 print(f"hello, {last}")
+
+#Basic functions
+def main():
+    name = input("What's your name, (but in main)?")
+    hello(name)
+
+def hello(to="world"):
+    print("Hello,", to)
+
+main()
