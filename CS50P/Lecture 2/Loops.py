@@ -1,63 +1,66 @@
+
 """
 Lecture 2 of CS50P course.
-Reviewing loops, lists, and dictionaries.
+Reviewing loops, lists and dictionaries.
 """
  
-# --- WHILE LOOP ---
-# Najlepsze podejście - liczymy od 0, używamy +=
+#While 
+ 
+"""
 i = 0
 while i < 3:
     print("meow")
     i += 1
+"""
  
-# --- FOR LOOP ---
-# Coraz lepsze podejścia do tego samego problemu:
+#For
  
-# 1. Lista ręczna
+"""
+#Worse
 for i in [0, 1, 2]:
     print("meow")
  
-# 2. range() - czystsze
+#Better
 for i in range(3):
     print("meow")
  
-# 3. _ zamiast i, gdy zmienna nieużywana
+#Best - _ when variable is unused
 for _ in range(3):
     print("meow")
  
-# 4. Jeszcze krótsze - ale daje "meowmeowmeow" w jednej linii
+# Alternative
 print("meow\n" * 3, end="")
+"""
  
-# --- WALIDACJA INPUT UŻYTKOWNIKA ---
-# Pętla while True + break to klasyczny wzorzec walidacji
+#Input validation
+ 
+def main():
+    meow(get_number())
+ 
 def get_number():
     while True:
         n = int(input("What's n? "))
         if n > 0:
-            return n  # return od razu zamiast break + osobny return
+            return n
  
 def meow(n):
     for _ in range(n):
         print("meow")
  
-def main():
-    meow(get_number())
- 
 main()
  
-# --- LISTY ---
+#Lists
+ 
 students = ["Hermione", "Harry", "Ron"]
  
-# Iterowanie po liście
 for student in students:
     print(student)
  
-# Iterowanie z indeksem (len + range)
+#With index
 for i in range(len(students)):
     print(i + 1, students[i])
  
-# --- SŁOWNIKI (dict) ---
-# Zamiast dwóch list (students[], houses[]) lepiej użyć dict:
+#Dictionaries
 students = {
     "Hermione": "Gryffindor",
     "Harry": "Gryffindor",
@@ -68,7 +71,7 @@ students = {
 for student in students:
     print(student, students[student], sep=", ")
  
-# Gdy potrzeba więcej danych na studenta - lista słowników:
+#More data = List of dicts
 students = [
     {"name": "Hermione", "house": "Gryffindor", "patronus": "Otter"},
     {"name": "Harry",    "house": "Gryffindor", "patronus": "Stag"},
@@ -79,19 +82,16 @@ students = [
 for student in students:
     print(student["name"], student["house"], student["patronus"], sep=", ")
  
-# --- MARIO (zagnieżdżone pętle) ---
-# Kolumna:
-def print_column(height):
-    for _ in range(height):
-        print("#")
+#Nested loops (One inside the other)
  
-# Wiersz:
-def print_row(width):
-    print("#" * width)
- 
-# Kwadrat - zewnętrzna pętla = wiersze, wewnętrzna = kolumny
 def print_square(size):
     for _ in range(size):
-        print_row(size)
+        print("#" * size)
+ 
+    #Nested alternative
+    for i in range(size):
+        for j in range(size):
+            print("#", end="")
+        print()
  
 print_square(3)
