@@ -1,8 +1,10 @@
 def main():
     item = input("Item: ").lower()
-    print(check_calories(item))
+    result = check_calories(item)
+    if result is not None:
+        print(result)
 
-def check_calories(fruit):
+def check_calories(item):
     fruits = [
         {"name": "Apple", "calories": 130},
         {"name": "Avocado", "calories": 50},
@@ -25,8 +27,8 @@ def check_calories(fruit):
         {"name": "Tangerine", "calories": 50},
         {"name": "Watermelon", "calories": 80}
 ]
-    for f in fruits:
-        if fruit ==  f["name"].lower():
-            return f["calories"]
+    for fruit in fruits:
+        if item ==  fruit["name"].lower():
+            return fruit["calories"]
 
 main()
